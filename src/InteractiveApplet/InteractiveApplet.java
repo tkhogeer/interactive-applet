@@ -49,41 +49,41 @@ public class InteractiveApplet extends HttpServlet{
 		
 		
 		//check and set shapeW	
-		if ((shapeWValue == null) || (Integer.parseInt(shapeWValue)>500) || (Integer.parseInt(shapeWValue)<10) ) {
+		if ((shapeWValue == "") || (Integer.parseInt(shapeWValue)>500) || (Integer.parseInt(shapeWValue)<10) ) {
 			errors += "Please enter shape width between 10-500";
-			/*
+			
 			PrintWriter writer =  response.getWriter();
 			response.setContentType("text/html");
-		    writer.println("<h2><font color=green>Pleaaaase enter shape width between 10-500</font></h2>");
-		    writer.close();*/
+		    writer.println("<h3><font color=green>Please enter shape width between 10-500</font></h3>");
+		    writer.close();
 		} else {
 			shapeW = (Integer.parseInt(shapeWValue));
 		}
 		
 		
 		//check and set shapeH
-		if ((shapeHValue == null) || (Integer.parseInt(shapeHValue)>500) || (Integer.parseInt(shapeHValue)<10) ) {
+		if ((shapeHValue == "") || (Integer.parseInt(shapeHValue)>500) || (Integer.parseInt(shapeHValue)<10) ) {
 			errors += "Please enter shape height between 10-500";
 		} else {
 			shapeH = (Integer.parseInt(shapeHValue));
 		}
 		
 		//check and set appW
-		if (( appWValue == null) || (Integer.parseInt(appWValue)>500) || (Integer.parseInt(appWValue)<10) ) {
+		if (( appWValue == "") || (Integer.parseInt(appWValue)>500) || (Integer.parseInt(appWValue)<10) ) {
 			errors += "Please enter applet width between 10-500";
 		} else {
 			appW = (Integer.parseInt(appWValue));
 		}
 		
 		//check and set appH
-		if ((appHValue == null) || (Integer.parseInt(appHValue)>700) || (Integer.parseInt(appHValue)<50) ) {
+		if ((appHValue == "") || (Integer.parseInt(appHValue)>700) || (Integer.parseInt(appHValue)<50) ) {
 			errors += "Please enter applet height between 50-700";
 		} else {
 			appH = (Integer.parseInt(appHValue));
 		}
 		
 		//check and set message
-		if (messageValue!=null) {
+		if (messageValue!="") {
 			message=messageValue;
 		} else {
 			message="";
@@ -191,13 +191,6 @@ public class InteractiveApplet extends HttpServlet{
 				font = new Font( "Serif", Font.ITALIC, fSize );
 				}
 		}
-		
-		
-
-		
-		System.out.println(shapeValue + shapeWValue + shapeHValue + appWValue + appHValue + messageValue + fontColorValue + bgColorValue +fontSizeValue);
-		System.out.println(shape + " " +shapeW + " " + shapeH + " " + message + " " + fSize + " " + fontC + " " + appW + " " + appH + " " + bgC);
-		System.out.println(font);
 
 		
 		
