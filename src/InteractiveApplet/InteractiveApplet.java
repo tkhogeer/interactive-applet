@@ -1,11 +1,16 @@
 package InteractiveApplet;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.util.Arrays;
+import java.util.List;
+
 import javax.servlet.*;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
 import java.io.*;
 
+@WebServlet("/appletServlet")
 public class InteractiveApplet extends HttpServlet{
 
 	//default values
@@ -13,7 +18,7 @@ public class InteractiveApplet extends HttpServlet{
 	int shapeW = 100;
 	int shapeH = 60;
 	String message = "Type Message";
-	String fStyle = "PLAIN";
+	Font font = new Font( "Serif", Font.PLAIN, 14 );
 	int fSize = 14;
 	Color fontC= Color.black;
 	int appW = 300;
@@ -21,58 +26,67 @@ public class InteractiveApplet extends HttpServlet{
 	Color bgC=Color.pink;
 	String errors="";
 	
-	String[] colors = {"black", "blue", "cyan", "darkGray", "gray", "green", "lightGray", "magenta", "orange", "pink", "red", "white", "yellow"};
-	String[] styles = {"BOLD", "ITALIC"};
-	
+	String fontStyleValues[] = {""};
+	public void doGet(HttpServletRequest req, HttpServletResponse res)
+			throws ServletException, IOException  {
+		System.out.println("InGet");
+
+			}
 	public void doPost( HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException{
+		System.out.println("InPost");
 		//get all values
-		String shapeValue = request.getParameter("shape");
-		int shapeWValue = Integer.parseInt(request.getParameter("shapeW"));
-		int shapeHValue = Integer.parseInt(request.getParameter("shapeH"));
-		int appWValue = Integer.parseInt(request.getParameter("appW"));
-		int appHValue = Integer.parseInt(request.getParameter("appH"));
+		String shapeValue = request.getParameter("shape");	
+	  	String shapeWValue = request.getParameter("shapeW");
+		String shapeHValue = request.getParameter("shapeH");
+		String appWValue = request.getParameter("appW");
+		String appHValue = request.getParameter("appH");
 		String messageValue = request.getParameter("message");
 		String fontColorValue = request.getParameter("fontColor");
 		String bgColorValue = request.getParameter("bgColor");
 		int fontSizeValue = Integer.parseInt(request.getParameter("fontSize"));
-		//String fontStyleValues[] = request.getParameterValues(“fStyle“) ;
+		String fontStyleValues[] = request.getParameterValues("fStyle");
 		
-		//check and set shapeW
-		if (( Integer.toString(shapeWValue) == null) || (shapeWValue>500) || (shapeWValue<10) ) {
+		
+		//check and set shapeW	
+		if ((shapeWValue == null) || (Integer.parseInt(shapeWValue)>500) || (Integer.parseInt(shapeWValue)<10) ) {
 			errors += "Please enter shape width between 10-500";
+			/*
 			PrintWriter writer =  response.getWriter();
 			response.setContentType("text/html");
 		    writer.println("<h2><font color=green>Pleaaaase enter shape width between 10-500</font></h2>");
-		    writer.close();
+		    writer.close();*/
 		} else {
-			shapeW = shapeWValue;
+			shapeW = (Integer.parseInt(shapeWValue));
 		}
 		
+		
 		//check and set shapeH
-		if (( Integer.toString(shapeHValue) == null) || (shapeHValue>500) || (shapeHValue<10) ) {
+		if ((shapeHValue == null) || (Integer.parseInt(shapeHValue)>500) || (Integer.parseInt(shapeHValue)<10) ) {
 			errors += "Please enter shape height between 10-500";
 		} else {
-			shapeH = shapeHValue;
+			shapeH = (Integer.parseInt(shapeHValue));
 		}
 		
 		//check and set appW
-		if (( Integer.toString(appWValue) == null) || (appWValue>500) || (appWValue<10) ) {
+		if (( appWValue == null) || (Integer.parseInt(appWValue)>500) || (Integer.parseInt(appWValue)<10) ) {
 			errors += "Please enter applet width between 10-500";
 		} else {
-			appW = appWValue;
+			appW = (Integer.parseInt(appWValue));
 		}
 		
 		//check and set appH
-		if (( Integer.toString(appHValue) == null) || (appHValue>700) || (appHValue<50) ) {
+		if ((appHValue == null) || (Integer.parseInt(appHValue)>700) || (Integer.parseInt(appHValue)<50) ) {
 			errors += "Please enter applet height between 50-700";
 		} else {
-			appH = appHValue;
+			appH = (Integer.parseInt(appHValue));
 		}
 		
 		//check and set message
 		if (messageValue!=null) {
 			message=messageValue;
+		} else {
+			message="";
 		}
 		
 		//set shape, fSize
@@ -160,9 +174,30 @@ public class InteractiveApplet extends HttpServlet{
 		else if (bgColorValue.equals("yellow")) {
 			bgC=Color.yellow;
 		}
-		
+	
 		//check and set fStyle
+		if (fontStyleValues==null) {
+			font = new Font( "Serif", Font.PLAIN, fSize );
+		} else {
+			List<String> fontStyleList = Arrays.asList(fontStyleValues);
+			if (fontStyleList.contains("bold")) {
+				if (fontStyleList.contains("italic")) {
+					font = new Font( "Serif", Font.BOLD + Font.ITALIC, fSize );
+				}
+				else {
+					font = new Font( "Serif", Font.BOLD , fSize );
+				}
+			} else {
+				font = new Font( "Serif", Font.ITALIC, fSize );
+				}
+		}
+		
+		
 
+		
+		System.out.println(shapeValue + shapeWValue + shapeHValue + appWValue + appHValue + messageValue + fontColorValue + bgColorValue +fontSizeValue);
+		System.out.println(shape + " " +shapeW + " " + shapeH + " " + message + " " + fSize + " " + fontC + " " + appW + " " + appH + " " + bgC);
+		System.out.println(font);
 
 		
 		
