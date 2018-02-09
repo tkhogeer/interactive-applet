@@ -52,7 +52,7 @@
                 <div class="form-group">
                   <input type="text" class="form-control form-control-sm" id="message" name="message"
                   aria-describedby="message" maxlength="20">
-                  <small id="message" class="form-text text-muted">Your message should not exceed 20 charcters long</small> </div>
+                  <small id="message" class="form-text text-muted">Your message should not exceed 20 characters long</small> </div>
                 <hr>
                 <!-- font style -->
                 <h4>Font Style</h4>
@@ -70,7 +70,7 @@
                     </div>
                   </div>
                 </div>
-                <br>
+               
                 <div class="form-row">
                   <div class="form-group col-md-4 col-lg-3">
                     <label for="font-size">Font Size</label>
@@ -108,7 +108,7 @@
                 </div>
                 <hr>
                 <!--applet style -->
-                <h4>Shape Style</h4>
+                <h4>Applet Style</h4>
                 <div class="form-row">
                   <div class="form-group col-md-3">
                     <label for="width" >Width</label>
@@ -140,7 +140,7 @@
                 <div class="alert text-center" role="alert"> verify that all your values are entered <br>before proceeding </div>
                 <!--create applet button-->
                 <div class="form-group text-center">
-                  <button type="submit" class="btn btn-primary" >Create my Applet</button>
+                  <button type="submit" class="btn btn-primary" >Create your Applet</button>
                   <!-- clear form and start all over -->
                   <p style="margin-top:20px;"> <a href="#">clear form and start all over</a> </p>
                 </div>
@@ -152,8 +152,21 @@
     
     <!--applet output section-->
     <div class="col-md-9 text-center fixed-top">
-      <applet >
-        Applet parameters for display go here
+      <applet code="../build/classes/InteractiveApplet/InteractiveApplet.html" >
+      <!--shape parameters -->
+        <param name="shape" value="shapeValue">
+        <param name="shapeW" vlaue="shapeWValue">
+        <param name="shapeH" value="shapeHValue">
+      <!-- messahe paramter -->
+         <param name="message" value="messageValue">
+      <!--font style parameters -->
+         <param name="fStyle"   value="fontStyleValue">
+         <param name="fontSize" value="fontSizeValue">
+         <param name="fontColor" value="fontColorValue">
+       <!-- applet parameters -->
+         <param name="appWValue" value="appW">
+         <param name="appHValue" value="appH">
+         <param name="bgColor" value="bgColorValue">
       </applet>
     </div>
   </div>
