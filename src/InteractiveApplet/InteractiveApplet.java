@@ -31,7 +31,6 @@ public class InteractiveApplet extends HttpServlet{
 	String fontStyleValues[] = {""};
 	public void doGet(HttpServletRequest req, HttpServletResponse res)
 			throws ServletException, IOException  {
-		System.out.println("InGet");
 
 			}
 	public void doPost( HttpServletRequest request, HttpServletResponse response)
@@ -53,11 +52,6 @@ public class InteractiveApplet extends HttpServlet{
 		//check and set shapeW	
 		if ((shapeWValue == "") || (Integer.parseInt(shapeWValue)>500) || (Integer.parseInt(shapeWValue)<10) ) {
 			errors += "Please enter shape width between 10-500";
-			
-			PrintWriter writer =  response.getWriter();
-			response.setContentType("text/html");
-		    writer.println("<h3><font color=green>Please enter shape width between 10-500</font></h3>");
-		    writer.close();
 		} else {
 			shapeW = (Integer.parseInt(shapeWValue));
 		}
@@ -195,19 +189,16 @@ public class InteractiveApplet extends HttpServlet{
 		}
 		
 
+
+	    
 		//HTML form entry
-		PrintWriter output;
+		PrintWriter writer =  response.getWriter();
 		response.setContentType("text/html");
-		output = response.getWriter();
-		
 		StringBuffer buf = new StringBuffer();
 		
-		/*************
-         html starts
-        *************/
-		buf.append("<html lang=\"en\"><head><meta name=\"viewport\" content=\"width=device-width, initial-scale=1, shrink-to-fit=no\"><title>\n");
+		buf.append("<html lang=\"en\"><head>1<meta name=\"viewport\" content=\"width=device-width, initial-scale=1, shrink-to-fit=no\"><title>Assignment 3 Interactive Applet - by Taqwa Khogeer and Maya Bayer</title>\n");
 		buf.append("<link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css\" integrity=\"sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy\" crossorigin=\"anonymous\">\n");
-		buf.append("<link rel=stylesheet href=applet-style.css></head>\n");
+		buf.append("<link rel=stylesheet href=\"applet-style.css\"></head>\n");
 		buf.append("<body><div class=container-fluid style=\"height:100%;\"><div class=row>\n");
 		
 		//applet input section starts---------------------------------------------
@@ -216,7 +207,7 @@ public class InteractiveApplet extends HttpServlet{
 		buf.append("<table class=\"table no-border\">\n");
 		buf.append("<thead><tr><th><h2>Create your Applet</h2></th></tr></thead>\n");
 		buf.append("<tbody><tr><td>\n");
-		buf.append("<form action=appletServlet method=Get>/n");//form starts
+		buf.append("<form action=appletServlet method=Post>/n");//form starts
 		
 		//shape style
 		buf.append("<h4>Shape Style</h4>\n");
@@ -338,7 +329,7 @@ public class InteractiveApplet extends HttpServlet{
 		//applet output section starts------------------------------------------
 		buf.append("<div class=\"col-md-9 text-center fixed-top\">\n");
 		//----------------------------------------------------------------------
-		buf.append("<applet code=\"/WEB-INF/classes/InteractiveAppletInteractiveApplet.class\" width=appW height=appH >\n");//applet starts
+		buf.append("<applet code=\"/WEB-INF/classes/InteractiveApplet/InteractiveApplet.class\" width=appW height=appH >\n");//applet starts
 		
 		//Shape parameters
 		buf.append("<param name=shape value=shapeValue>\n");
@@ -369,13 +360,9 @@ public class InteractiveApplet extends HttpServlet{
 		buf.append("<script src=\"https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js\" integrity=\"sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q\" crossorigin=anonymous></script> \n");
 		buf.append("<script src=\"https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js\" integrity=\"sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4\" crossorigin=anonymous></script>\n");
 		buf.append("</body></html>\n");
-		output.println(buf.toString());
-		output.close();
+		writer.println(buf.toString());
+		writer.close();
 		
-        /****************
-         html ends
-        ***************/
-
 
 		
 	}
@@ -412,13 +399,13 @@ public class InteractiveApplet extends HttpServlet{
 		FontMetrics f = g.getFontMetrics();
 		
 		//draw shape
-		if (shape.equals("RECT")) {
+		if (shape.equals("rect")) {
 			g.drawRect((appW-shapeW)/2,(appH-shapeH)/2,appW,appH);
 		}
-		else if (shape.equals("ROUNDRECT")) {
+		else if (shape.equals("roundRect")) {
 			g.drawRoundRect((appW-shapeW)/2,(appH-shapeH)/2,appW,appH, 20, 20);
 		}
-		else if (shape.equals("OVAL")) {
+		else if (shape.equals("oval")) {
 			g.drawOval((appW-shapeW)/2,(appH-shapeH)/2,appW,appH);
 		}
 		
