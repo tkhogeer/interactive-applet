@@ -91,7 +91,8 @@
                   <div class="form-group col-md-4">
                     <label for="font-color">Font Color</label>
                    <select  name="fontColor" id="fontColor" class="custom-select custom-select-sm " >
-                      <option data-thumbnail="images/black.gif" value="black" selected="selected" >Black</option>
+                      <option  value="black" selected="selected" >Black</option>
+                      <option value="white"> White</option>
                       <option value="blue">  Blue</option>
                       <option value="cyan"> Cyan</option>
                       <option value="darkGray"> Dark Gray</option>
@@ -102,7 +103,8 @@
                       <option value="magenta"> Magenta</option>
                       <option value="orange"> Orange</option>
                       <option value="pink"> Pink</option>
-                      <option value="red"> White</option>
+                      <option value="red"> Red</option>
+                      
                     </select>
                   </div>
                 </div>
@@ -121,18 +123,19 @@
                   <div class="form-group col-md-6">
                     <label for="background-color">Background Color</label><br>
                     <select name="bgColor" id="backgroundColor" class="custom-select custom-select-sm" >
-                      <option value="black" selected="selected">Black</option>
-                      <option value="blue">Blue</option>
-                      <option value="cyan">Cyan</option>
-                      <option value="darkGray">Dark Gray</option>
-                      <option value="gray">Gray</option>
-                      <option value="green">Green</option>
-                      <option value="yellow">Yellow</option>
-                      <option value="lightGray">Light Gray</option>
-                      <option value="magenta">Magenta</option>
-                      <option value="orange">Orange</option>
-                      <option value="pink">Pink</option>
-                      <option value="red">White</option>
+                      <option value="black" >Black</option>
+                      <option value="white" selected="selected"> White</option>
+                      <option value="blue">  Blue</option>
+                      <option value="cyan"> Cyan</option>
+                      <option value="darkGray"> Dark Gray</option>
+                      <option value="gray"> Gray</option>
+                      <option value="green"> Green</option>
+                      <option value="yellow"> Yellow</option>
+                      <option value="lightGray"> Light Gray</option>
+                      <option value="magenta"> Magenta</option>
+                      <option value="orange"> Orange</option>
+                      <option value="pink"> Pink</option>
+                      <option value="red"> Red</option>
                     </select>
                   </div>
                 </div>
@@ -140,9 +143,9 @@
                 <div class="alert text-center" role="alert"> verify that all your values are entered <br>before proceeding </div>
                 <!--create applet button-->
                 <div class="form-group text-center">
-                  <button type="submit" class="btn btn-primary" >Create your Applet</button>
+                  <input type="submit" class="btn btn-primary" value="Create Your Applet"><br>
                   <!-- clear form and start all over -->
-                  <p style="margin-top:20px;"> <a href="#">clear form and start all over</a> </p>
+                  <input type="reset" value="Clear Form" />
                 </div>
               </form></td>
           </tr>
@@ -152,12 +155,12 @@
     
     <!--applet output section-->
     <div class="col-md-9 text-center fixed-top">
-      <applet code="../build/classes/InteractiveApplet/InteractiveApplet.html" >
+      <applet code="../build/classes/InteractiveApplet/InteractiveApplet.class" width="appW" height="appH" >
       <!--shape parameters -->
         <param name="shape" value="shapeValue">
         <param name="shapeW" vlaue="shapeWValue">
         <param name="shapeH" value="shapeHValue">
-      <!-- messahe paramter -->
+      <!-- message paramter -->
          <param name="message" value="messageValue">
       <!--font style parameters -->
          <param name="fStyle"   value="fontStyleValue">
@@ -167,6 +170,7 @@
          <param name="appWValue" value="appW">
          <param name="appHValue" value="appH">
          <param name="bgColor" value="bgColorValue">
+         
       </applet>
     </div>
   </div>
