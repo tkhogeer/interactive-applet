@@ -2,21 +2,20 @@ package InteractiveApplet;
 
 import java.awt.Color;
 import java.awt.Font;
-import java.awt.FontMetrics;
-import java.awt.Graphics;
 import java.util.Arrays;
 import java.util.List;
-import javax.swing.JApplet;
 import javax.servlet.*;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
+import javax.swing.JOptionPane;
+
 import java.io.*;
 
 @WebServlet("/appletServlet")
 public class InteractiveApplet extends HttpServlet{
 
 	//default values
-	String shape="RECT";
+	String shape="rect";
 	int shapeW = 100;
 	int shapeH = 60;
 	String message = "Type Message";
@@ -25,17 +24,17 @@ public class InteractiveApplet extends HttpServlet{
 	Color fontC= Color.black;
 	int appW = 300;
 	int appH = 150;
-	Color bgC=Color.pink;
+	Color bgC=Color.white;
 	String errors="";
 	
 	String fontStyleValues[] = {""};
+	
 	public void doGet(HttpServletRequest req, HttpServletResponse res)
 			throws ServletException, IOException  {
 
 			}
 	public void doPost( HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException{
-		System.out.println("InPost");
 		//get all values
 		String shapeValue = request.getParameter("shape");	
 	  	String shapeWValue = request.getParameter("shapeW");
@@ -48,10 +47,11 @@ public class InteractiveApplet extends HttpServlet{
 		int fontSizeValue = Integer.parseInt(request.getParameter("fontSize"));
 		String fontStyleValues[] = request.getParameterValues("fStyle");
 		
+		String fStyle = Arrays.toString(fontStyleValues);
 		
 		//check and set shapeW	
 		if ((shapeWValue == "") || (Integer.parseInt(shapeWValue)>500) || (Integer.parseInt(shapeWValue)<10) ) {
-			errors += "Please enter shape width between 10-500";
+			JOptionPane.showMessageDialog(null, "Please enter shape width between 10-500", "Error", JOptionPane.ERROR_MESSAGE);
 		} else {
 			shapeW = (Integer.parseInt(shapeWValue));
 		}
@@ -89,104 +89,6 @@ public class InteractiveApplet extends HttpServlet{
 		shape = shapeValue;
 		fSize = fontSizeValue;
 		
-		//set fontC
-		if (fontColorValue.equals("black")) {
-			fontC=Color.black;
-		}
-		else if (fontColorValue.equals("blue")) {
-			fontC=Color.blue;
-		}
-		else if (fontColorValue.equals("cyan")) {
-			fontC=Color.cyan;
-		}
-		else if (fontColorValue.equals("darkGray")) {
-			fontC=Color.darkGray;
-		}
-		else if (fontColorValue.equals("gray")) {
-			fontC=Color.gray;
-		}
-		else if (fontColorValue.equals("lightGray")) {
-			fontC=Color.lightGray;
-		}
-		else if (fontColorValue.equals("green")) {
-			fontC=Color.green;
-		}
-		else if (fontColorValue.equals("magenta")) {
-			fontC=Color.magenta;
-		}
-		else if (fontColorValue.equals("orange")) {
-			fontC=Color.orange;
-		}
-		else if (fontColorValue.equals("pink")) {
-			fontC=Color.pink;
-		}
-		else if (fontColorValue.equals("red")) {
-			fontC=Color.red;
-		}
-		else if (fontColorValue.equals("white")) {
-			fontC=Color.white;
-		}
-		else if (fontColorValue.equals("yellow")) {
-			fontC=Color.yellow;
-		}
-		
-		//set bgC
-		if (bgColorValue.equals("black")) {
-			bgC=Color.black;
-		}
-		else if (bgColorValue.equals("blue")) {
-			bgC=Color.blue;
-		}
-		else if (bgColorValue.equals("cyan")) {
-			bgC=Color.cyan;
-		}
-		else if (bgColorValue.equals("darkGray")) {
-			bgC=Color.darkGray;
-		}
-		else if (bgColorValue.equals("gray")) {
-			bgC=Color.gray;
-		}
-		else if (bgColorValue.equals("lightGray")) {
-			bgC=Color.lightGray;
-		}
-		else if (bgColorValue.equals("green")) {
-			bgC=Color.green;
-		}
-		else if (bgColorValue.equals("magenta")) {
-			bgC=Color.magenta;
-		}
-		else if (bgColorValue.equals("orange")) {
-			bgC=Color.orange;
-		}
-		else if (bgColorValue.equals("pink")) {
-			bgC=Color.pink;
-		}
-		else if (bgColorValue.equals("red")) {
-			bgC=Color.red;
-		}
-		else if (bgColorValue.equals("white")) {
-			bgC=Color.white;
-		}
-		else if (bgColorValue.equals("yellow")) {
-			bgC=Color.yellow;
-		}
-	
-		//check and set fStyle
-		if (fontStyleValues==null) {
-			font = new Font( "Serif", Font.PLAIN, fSize );
-		} else {
-			List<String> fontStyleList = Arrays.asList(fontStyleValues);
-			if (fontStyleList.contains("bold")) {
-				if (fontStyleList.contains("italic")) {
-					font = new Font( "Serif", Font.BOLD + Font.ITALIC, fSize );
-				}
-				else {
-					font = new Font( "Serif", Font.BOLD , fSize );
-				}
-			} else {
-				font = new Font( "Serif", Font.ITALIC, fSize );
-				}
-		}
 		
 
 
@@ -196,7 +98,7 @@ public class InteractiveApplet extends HttpServlet{
 		response.setContentType("text/html");
 		StringBuffer buf = new StringBuffer();
 		
-		buf.append("<html lang=\"en\"><head>1<meta name=\"viewport\" content=\"width=device-width, initial-scale=1, shrink-to-fit=no\"><title>Assignment 3 Interactive Applet - by Taqwa Khogeer and Maya Bayer</title>\n");
+		buf.append("<html lang=\"en\"><head><meta name=\"viewport\" content=\"width=device-width, initial-scale=1, shrink-to-fit=no\"><title>Assignment 3 Interactive Applet - by Taqwa Khogeer and Maya Bayer</title>\n");
 		buf.append("<link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css\" integrity=\"sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy\" crossorigin=\"anonymous\">\n");
 		buf.append("<link rel=stylesheet href=\"applet-style.css\"></head>\n");
 		buf.append("<body><div class=container-fluid style=\"height:100%;\"><div class=row>\n");
@@ -207,7 +109,7 @@ public class InteractiveApplet extends HttpServlet{
 		buf.append("<table class=\"table no-border\">\n");
 		buf.append("<thead><tr><th><h2>Create your Applet</h2></th></tr></thead>\n");
 		buf.append("<tbody><tr><td>\n");
-		buf.append("<form action=appletServlet method=Post>/n");//form starts
+		buf.append("<form action=appletServlet method=Post>\n");//form starts
 		
 		//shape style
 		buf.append("<h4>Shape Style</h4>\n");
@@ -224,15 +126,15 @@ public class InteractiveApplet extends HttpServlet{
 		buf.append("<br><br><div class=form-row>\n");
 		buf.append("<div class=\"form-group col-md-3\">\n");
 		buf.append("<label for=width >Width</label>\n");
-		buf.append("<input type=text class=\"form-control form-control-sm\" id=shapeWidth name=shapeW maxlength=3 ></div>\n");
+		buf.append("<input type=text class=\"form-control form-control-sm\" id=shapeW name=shapeW value=shapeW maxlength=3 ></div>\n");
 		buf.append("<div class=\"form-group col-md-9 float-left\">\n");
 		buf.append("<label for=heighth>Height</label>\n");
-		buf.append("<input type=text class=\"form-control form-control-sm\" id=shapeHeight name=shapeH maxlength=3 ></div></div><hr>\n");
+		buf.append("<input type=text class=\"form-control form-control-sm\" id=shapeH name=shapeH value=shapeH maxlength=3 ></div></div><hr>\n");
 		
 		//message
 		buf.append("<h4>Message</h4>\n");
 		buf.append("<div class=form-group>\n");
-		buf.append("<input type=text class=\"form-control form-control-sm\" id=message name=message aria-describedby=message maxlength=20>\n");
+		buf.append("<input type=text class=\"form-control form-control-sm\" id=message name=message aria-describedby=message value=message maxlength=20>\n");
 		buf.append("<small id=message class=\"form-text text-muted\">Your message should not exceed 20 characters long</small></div><hr>\n");
 		
 		//font style
@@ -250,11 +152,11 @@ public class InteractiveApplet extends HttpServlet{
 		buf.append("<div class=form-row>\n");
 		buf.append("<div class=\"form-group col-md-4 col-lg-3\">\n");
 		buf.append("<label for=font-size>Font Size</label>\n");
-		buf.append("<select name=fontSize id=fontSize class=\"custom-select custom-select-sm\" >\n"); //font sizes dropdown
+		buf.append("<select name=fontSize id=fontSize value=fontSize class=\"custom-select custom-select-sm\" >\n"); //font sizes dropdown
 		buf.append("<option value=8>8</option>\n");
 		buf.append("<option value=10>10</option>\n");
 		buf.append("<option value=12>12</option>\n");
-		buf.append("<option value=14 selected=\"selected\">14</option>\n");// font size default value
+		buf.append("<option value=14 selected=selected>14</option>\n");// font size default value
 		buf.append("<option value=18>18</option>\n");
 		buf.append("<option value=24>24</option>\n");
 		buf.append("<option value=30>36</option>\n");
@@ -265,7 +167,7 @@ public class InteractiveApplet extends HttpServlet{
 		buf.append("</select></div>\n");
 		buf.append("<div class=\"form-group col-md-4\">\n");
 		buf.append("<label for=font-color>Font Color</label>\n");
-		buf.append("<select  name=fontColor id=fontColor class=\"custom-select custom-select-sm \" >\n");//font color drop down
+		buf.append("<select  name=fontColor id=fontColor value=fontColor class=\"custom-select custom-select-sm \" >\n");//font color drop down
 		buf.append("<option value=black selected=selected >Black</option>\n");//font color default value: black
 		buf.append("<option value=white> White</option>\n");
 		buf.append("<option value=blue>  Blue</option>\n");
@@ -286,13 +188,13 @@ public class InteractiveApplet extends HttpServlet{
 		buf.append("<div class=form-row>\n");
 		buf.append("<div class=\"form-group col-md-3\">\n");
 		buf.append("<label for=width >Width</label>\n");
-		buf.append("<input type=text class=\"form-control form-control-sm\" name=appW id=appletWidth maxlength=3 ></div>\n");//applet width
+		buf.append("<input type=text class=\"form-control form-control-sm\" name=appW id=appW maxlength=3 value=appW ></div>\n");//applet width
 		buf.append("<div class=\"form-group col-md-3\">\n");
 		buf.append("<label for=heighth>Height</label>\n");
-		buf.append("<input type=text class=\"form-control form-control-sm\" name=appH id=appletHeight maxlength=3 ></div>\n");//applet height
+		buf.append("<input type=text class=\"form-control form-control-sm\" name=appH id=appH maxlength=3 value=appH ></div>\n");//applet height
 		buf.append("<div class=\"form-group col-md-6\">\n");
 		buf.append("<label for=background-color>Background Color</label><br>\n");
-		buf.append("<select name=bgColor id=backgroundColor class=\"custom-select custom-select-sm\" >\n");//applet background color dropdown
+		buf.append("<select name=bgColor id=bgColor value=bgColor class=\"custom-select custom-select-sm\" >\n");//applet background color dropdown
 		buf.append("<option value=black >Black</option>\n");
 		buf.append("<option value=white selected=selected >White</option>\n");//background color default value: white
 		buf.append("<option value=blue>  Blue</option>\n");
@@ -329,25 +231,39 @@ public class InteractiveApplet extends HttpServlet{
 		//applet output section starts------------------------------------------
 		buf.append("<div class=\"col-md-9 text-center fixed-top\">\n");
 		//----------------------------------------------------------------------
-		buf.append("<applet code=\"/WEB-INF/classes/InteractiveApplet/InteractiveApplet.class\" width=appW height=appH >\n");//applet starts
+		buf.append("<applet code=\"/WEB-INF/classes/InteractiveApplet/Applet.class\" width=appW height=appH >\n");//applet starts
 		
 		//Shape parameters
-		buf.append("<param name=shape value=shapeValue>\n");
-		buf.append("<param name=shapeW vlaue=shapeWValue>\n");
-		buf.append("<param name=shapeH value=shapeHValue>\n");
+		buf.append("<param name=shape value=\"");
+		buf.append(shape);
+		buf.append("\">\n<param name=shapeW value=\"");
+		buf.append(shapeW);
+		buf.append("\">\n<param name=shapeH value=\"");
+		buf.append(shapeH);
+		buf.append("\">\n");
 		
 		//message parameter
-		buf.append("<param name=message value=messageValue>\n");
+		buf.append("<param name=message value=\"");
+		buf.append(message);
+		buf.append("\">\n");
 		
 		//font style parameters
-		buf.append("<param name=fStyle   value=fontStyleValue>\n");
-		buf.append("<param name=fontSize value=fontSizeValue>\n");
-		buf.append("<param name=fontColor value=fontColorValue>\n");
+		buf.append("<param name=fSize   value=\"");
+		buf.append(fSize);
+		buf.append("\">\n<param name=fontC value=\"");
+		buf.append(fontColorValue);
+		buf.append("\">\n<param name=fontStyle value=\"");
+		buf.append(fStyle);
+		buf.append("\">\n");
 		
 		//applet parameters
-		buf.append("<param name=appWValue value=appW>\n");
-		buf.append("<param name=appHValue value=appH>\n");
-		buf.append("<param name=bgColor value=bgColorValue>\n");
+		buf.append("<param name=appW value=\"");
+		buf.append(appW);
+		buf.append("\">\n<param name=appH value=\"");
+		buf.append(appH);
+		buf.append("\">\n<param name=bgC value=\"");
+		buf.append(bgColorValue);
+		buf.append("\">\n");
 		
 		buf.append("</applet>\n");//applet ends
 		
@@ -367,56 +283,6 @@ public class InteractiveApplet extends HttpServlet{
 		
 	}
 	
-	public void paint(Graphics g) {
-		g.setColor(bgC);
-		g.fillRect(0, 0, appW, appH);
-		g.setColor(fontC);
-		g.setFont(font);
-		FontMetrics fm = g.getFontMetrics();
-		if ((fm.getHeight()>=shapeH) || (fm.stringWidth(message)>=shapeW)){
-			fSize=14;
-			errors+="Font too large";
-			if (fontStyleValues==null) {
-				font = new Font( "Serif", Font.PLAIN, fSize );
-			} else {
-				List<String> fontStyleList = Arrays.asList(fontStyleValues);
-				if (fontStyleList.contains("bold")) {
-					if (fontStyleList.contains("italic")) {
-						font = new Font( "Serif", Font.BOLD + Font.ITALIC, fSize );
-					}
-					else {
-						font = new Font( "Serif", Font.BOLD , fSize );
-					}
-				} else {
-					font = new Font( "Serif", Font.ITALIC, fSize );
-					}
-			}
-		}
-		
-		g.setFont(font);
-		
-		//font metrics
-		FontMetrics f = g.getFontMetrics();
-		
-		//draw shape
-		if (shape.equals("rect")) {
-			g.drawRect((appW-shapeW)/2,(appH-shapeH)/2,appW,appH);
-		}
-		else if (shape.equals("roundRect")) {
-			g.drawRoundRect((appW-shapeW)/2,(appH-shapeH)/2,appW,appH, 20, 20);
-		}
-		else if (shape.equals("oval")) {
-			g.drawOval((appW-shapeW)/2,(appH-shapeH)/2,appW,appH);
-		}
-		
-		//write message
-		int fmx = (appW-appW)/2 + (appW - f.stringWidth(message)) / 2;
-		int fmy = (appH-shapeH)/2 + ((appH - f.getHeight()) / 2) + f.getAscent();
-		g.drawString(message, fmx, fmy);
-		
-		//write errors
-		g.setFont( new Font( "Serif", Font.PLAIN, 14 ) );
-		g.drawString(errors, 10, 15);
-	}
+
 
 }
