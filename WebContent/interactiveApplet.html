@@ -1,4 +1,3 @@
-
 <!DOCTYPE html >
 <html lang="en">
 <head>
@@ -27,7 +26,7 @@
                 <h6>Choose a Shape</h6>
                 <!--shape type-->
                 <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" name="shape" id="shape" value="rect">
+                  <input class="form-check-input" type="radio" name="shape" id="shape" value="rect" checked>
                   <label class="form-check-label" for="shape"><img src="images/rect.gif" alt="rectangle"></label>
                   <input class="form-check-input" type="radio" name="shape" id="shape" value="roundRect">
                   <label class="form-check-label" for="shape"><img src="images/rnd-rect.gif" alt="rounded rectangle"></label>
@@ -40,11 +39,11 @@
                 <div class="form-row">
                   <div class="form-group col-md-3">
                     <label for="width" >Width</label>
-                    <input type="text" class="form-control form-control-sm" id="shapeW" name="shapeW" maxlength="3" >
+                    <input type="text" class="form-control form-control-sm" id="shapeW" name="shapeW" maxlength="3" value="200">
                   </div>
-                  <div class="form-group col-md-9 float-left">
+                  <div class="form-group col-md-3 float-left">
                     <label for="heighth">Height</label>
-                    <input type="text" class="form-control form-control-sm" id="shapeH" name="shapeH" maxlength="3" >
+                    <input type="text" class="form-control form-control-sm" id="shapeH" name="shapeH" maxlength="3" value="150" >
                   </div>
                 </div>
                 <hr>
@@ -52,7 +51,7 @@
                 <h4>Message</h4>
                 <div class="form-group">
                   <input type="text" class="form-control form-control-sm" id="message" name="message"
-                  aria-describedby="message" maxlength="20">
+                  aria-describedby="message" maxlength="20" value="Write your message">
                   <small id="message" class="form-text text-muted">Your message should not exceed 20 characters long</small> </div>
                 <hr>
                 <!-- font style -->
@@ -62,7 +61,7 @@
                     <label>Font Style</label>
                     <br>
                     <div class="form-check form-check-inline">
-                      <input class="form-check-input" type="checkbox" name="fStyle" id="bold" value="fStyle">
+                      <input class="form-check-input" type="checkbox" name="fStyle" id="bold" value="bold">
                       <label class="form-check-label" for="bold"><strong>Bold</strong></label>
                     </div>
                     <div class="form-check form-check-inline">
@@ -91,9 +90,9 @@
                   </div>
                   <div class="form-group col-md-4">
                     <label for="font-Color">Font Color</label>
-                   <select  name="fontC" id="fontC" class="custom-select custom-select-sm " >
+                   <select  name="fontColor" id="fontColor" class="custom-select custom-select-sm " >
                       <option  value="black" selected="selected" >Black</option>
-                      <option value="fontC"> White</option>
+                      <option value="white"> White</option>
                       <option value="blue">  Blue</option>
                       <option value="cyan"> Cyan</option>
                       <option value="darkGray"> Dark Gray</option>
@@ -115,15 +114,15 @@
                 <div class="form-row">
                   <div class="form-group col-md-3">
                     <label for="width" >Width</label>
-                    <input type="text" class="form-control form-control-sm" name="appW" id="appW" maxlength="3" >
+                    <input type="text" class="form-control form-control-sm" name="appW" id="appW" maxlength="3" value="300" >
                   </div>
                   <div class="form-group col-md-3">
                     <label for="heighth">Height</label>
-                    <input type="text" class="form-control form-control-sm" name="appH" id="appH" maxlength="3" >
+                    <input type="text" class="form-control form-control-sm" name="appH" id="appH" maxlength="3" value="150" >
                   </div>
                   <div class="form-group col-md-6">
                     <label for="background-color">Background Color</label><br>
-                    <select name="bgC" id="bgC" class="custom-select custom-select-sm" >
+                    <select name="bgColor" id="bgColor" class="custom-select custom-select-sm" >
                       <option value="black" >Black</option>
                       <option value="white" selected="selected"> White</option>
                       <option value="blue">  Blue</option>
@@ -145,8 +144,7 @@
                 <!--create applet button-->
                 <div class="form-group text-center">
                   <input type="submit" class="btn btn-primary" value="Create Your Applet"><br>
-                  <!-- clear form and start all over -->
-                  <input type="reset" value="Clear Form" />
+
 
                 </div>
               </form></td>
@@ -182,15 +180,3 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
 </body>
 </html>
-© 2018 GitHub, Inc.
-Terms
-Privacy
-Security
-Status
-Help
-Contact GitHub
-API
-Training
-Shop
-Blog
-About
