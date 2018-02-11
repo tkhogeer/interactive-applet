@@ -15,7 +15,7 @@ a {
 }
 /**tables**/
 thead {
-	background: #333;
+	background:#06C;
 	color: #fff;
 }
 
@@ -32,6 +32,14 @@ margin-left:30px;
 #fontType {
 	width:115px;
 }
+input[type="reset"]{
+border:0;
+margin-top:40px;
+background:transparent;
+color:#666;
+text-decoration:underline;
+}
+input[type="reset"]:hover{color:#999;}
 /**graphics**/
 .grey {
 	background:#CCC;
