@@ -1,3 +1,4 @@
+//Assignment 3 Interactive Applet - by Taqwa Khogeer and Maya Bayer
 package InteractiveApplet;
 
 import java.awt.Color;
@@ -91,7 +92,7 @@ public class InteractiveApplet extends HttpServlet{
 		
 		
 
-
+/*
 		//HTML form entry
 		PrintWriter writer =  response.getWriter();
 		response.setContentType("text/html");
@@ -453,7 +454,7 @@ public class InteractiveApplet extends HttpServlet{
 		//applet output section starts------------------------------------------
 		buf.append("<div class=\"col-md-9 text-center fixed-top\">\n");
 		//----------------------------------------------------------------------
-		buf.append("<applet code=\"InteractiveApplet/Applet\" width="+appW+" height="+appH+" >\n");//applet starts
+		buf.append("<applet code=\"Applet.class\" width="+appW+" height="+appH+" >\n");//applet starts
 		
 		//Shape parameters
 		buf.append("<param name=shape value="+shape+">\n");
@@ -487,7 +488,22 @@ public class InteractiveApplet extends HttpServlet{
 		buf.append("</body></html>\n");
 		writer.println(buf.toString());
 		writer.close();
-
+*/
+		String applet = String.format("<applet code=\"Applet.class\" width=\"400\" height=\"400\">\n" +
+				"<param name='message' value='%s'>\n" +
+				"<param name='fontC' value='%s'>\n" +
+				"<param name='bgC' value='%s'>\n" +
+				"<param name='shapeH' value='%s'>\n" +
+				"<param name='shapeW' value='%s'>\n" +
+				"<param name='appH' value='%s'>\n" +
+				"<param name='appW' value='%s'>\n" +
+				"<param name='fStyle' value='%s'>\n" +
+				"<param name='shape' value='%s'>\n" +
+				"<param name='fSize' value='%s'>\n" +
+				"</applet>", message, fontC, bgC, shapeH, shapeW, appH, appW, fStyle, shape, fSize );
+		 
+		request.getSession().setAttribute("applet", applet);
+		response.sendRedirect("index.jsp");
 		
 	}	
 
