@@ -64,6 +64,10 @@ input[type="reset"]:hover{color:#999;}
 .btn-primary:hover {
 	background-color:#060;
 }
+#iframeDiv{
+	min-width: 100%;
+	height:100;
+}
 .alert{border:1px dashed #333;}
 /*color and shape icons */
 select#fontColor option[value=black]{background:url(images/black.gif) center left no-repeat;}

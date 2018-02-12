@@ -5,7 +5,7 @@
 <title>Assignment 3 Interactive Applet - by Taqwa Khogeer and Maya Bayer</title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
 <!--custom css -->
-<link rel="stylesheet" href="applet-style.css">
+<link rel="stylesheet" href="applet-style.css" type="text/css">
 </head>
 <body>
 <div class="container-fluid" style="height:100%;">
@@ -20,7 +20,7 @@
         </thead>
         <tbody>
           <tr>
-            <td><form method="post" action="appletServlet">
+            <td><form method="post" action="appletServlet" target="applet">
                 <!--shape Style -->
                 <h4>Shape Style</h4>
                 <h6>Choose a Shape</h6>
@@ -151,14 +151,35 @@
           </tr>
         </tbody>
       </table>
+    </div >
+
+    <!--%if (session.getAttribute("applet") !=null) {out.print (session.getAttribute("applet"));}%>-->
+    
+    <div >
+    <iframe id=iframeDiv name="applet" src="appletServlet"></iframe>
+      <!-- <applet code="WEB-INF\classes\InteractiveApplet" width="appW" height="appH">
+      <param name="shape" value="shape">
+		<param name="shapeW" value="shapeW">
+	<param name="shapeH" value="shapeH">
+		
+		//message parameter
+		<param name="message" value="message">
+		
+		//font style parameters
+		<param name="fStyle"   value="fStyle">
+		<param name="fontSize" value="fontSize">
+		<param name="fontCr" value="fontC">
+		
+		//applet parameters
+		<param name="appW" value="appW">
+		<param name="appH" value="appH">
+		<param name="bgC" value="bgC">
+		
+		
+      </applet> -->
     </div>
-    <%
-    if (session.getAttribute("applet") !=null) {out.print (session.getAttribute("applet"));}
-    %>
-     
     </div>
-  </div>
-</div>
+
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script> 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script> 
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
