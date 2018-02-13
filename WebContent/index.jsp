@@ -43,7 +43,7 @@
                   </div>
                   <div class="form-group col-md-3 float-left">
                     <label for="heighth">Height</label>
-                    <input type="text" class="form-control form-control-sm" id="shapeH" name="shapeH" maxlength="3" value="150" >
+                    <input type="text" class="form-control form-control-sm" id="shapeH" name="shapeH" maxlength="3" value="100" >
                   </div>
                 </div>
                 <hr>
@@ -154,7 +154,7 @@
     </div >
 
     
-    <div class="col-md-9 text-center fixed-top" >
+    <div class="col-md-9 text-center" >
     <iframe id=iframeDiv name="applet" src="appletServlet"></iframe>
 	  </div>
   

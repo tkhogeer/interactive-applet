@@ -105,7 +105,7 @@ public class Interactive2 extends HttpServlet{
 				"<param name='shape' value='%s'>\n" +
 				"<param name='fSize' value='%s'>\n" +
 				"</applet>", message, fontColorValue, bgColorValue, shapeH, shapeW, appH, appW, fStyle, shape, fSize );
-		 
+
 		request.getSession().setAttribute("applet", applet);
 		//response.sendRedirect("index.jsp");
 		request.getRequestDispatcher("applet.jsp").forward(request, response);
