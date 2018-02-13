@@ -153,30 +153,11 @@
       </table>
     </div >
 
-    <!--%if (session.getAttribute("applet") !=null) {out.print (session.getAttribute("applet"));}%>-->
     
-    <div >
+    <div class="col-md-9 text-center fixed-top" >
     <iframe id=iframeDiv name="applet" src="appletServlet"></iframe>
-      <!-- <applet code="WEB-INF\classes\InteractiveApplet" width="appW" height="appH">
-      <param name="shape" value="shape">
-		<param name="shapeW" value="shapeW">
-	<param name="shapeH" value="shapeH">
-		
-		//message parameter
-		<param name="message" value="message">
-		
-		//font style parameters
-		<param name="fStyle"   value="fStyle">
-		<param name="fontSize" value="fontSize">
-		<param name="fontCr" value="fontC">
-		
-		//applet parameters
-		<param name="appW" value="appW">
-		<param name="appH" value="appH">
-		<param name="bgC" value="bgC">
-		
-		
-      </applet> -->
+	  </div>
+  
     </div>
     </div>
 
